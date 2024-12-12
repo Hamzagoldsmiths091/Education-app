@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="/css/style.css">
+<!-- Display success or error messages -->
+<% if (typeof message !== 'undefined' && message) { %>
+    <div class="<%= messageType === 'success' ? 'alert-success' : 'alert-error' %>">
+        <%= message %>
+    </div>
+<% } %>
+<div class='contact'>
+    <div class="contact-col">
+        <h3 style="color:  #212EA0;">Send us a message <img src='../assets/msg-icon.png' alt="" /></h3>
+        <p>
+        Feel free to reach out through our contact form or find our contact information below.Your feedback,questions and suggestions are important to us as we strive to provide exceptional servive to our university community.    
+        </p>
+        <ul>
+            <li> <img src= '../assets/mail-icon.png'alt="" />Contact@Hamza.dev</li>
+            <li> <img src='../assets/phone-icon.png' alt="" /> +44xxxxxxx</li>
+            <li> <img src='../assets/location-icon.png' alt="" />London England</li>
+        </ul>
+    </div>
+    <div class='contact-col'>
+        <h1 style="color:  #212EA0;">Add Course</h1>
+        <br>
+        <form action="/course/add" method="POST">
+            <label for="course_name" >Course Name</label>
+            <input type="text" name='course_name'placeholder='Enter your course' value="" required/>
+            <label for="user_id" >Course ID</label>
+            <input type="number" name='user-id' placeholder='Enter your course id' id='user-id' value="" required />
+            <label >Description</label>
+            <textarea name='message'rows='6' placeholder='Enter your message'required></textarea>
+            <button type='submit' class='btn dark-btn'>Add Course <img src='../assets/white-arrow.png' alt="" /></button>
+        </form>
+    </div>
+</div>
+
+
+<br>
+<br>
+<br>
+<br>

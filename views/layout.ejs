@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="<%= typeof pageClass !== 'undefined' ? pageClass : '' %>"> <!-- Fallback for pageClass -->
+    <header>
+        <nav class="container <%= typeof navbarClass !== 'undefined' ? navbarClass : '' %>"> <!-- Fallback for navbarClass -->
+            <img src="/assets/logo.png" alt="Logo" class="logo">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/course/add">Courses</a></li>
+                <li><a href="/course/search">Programs</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Content from child views will be inserted here -->
+        <%- body %>
+    </main>
+
+    <footer>
+        <div class='footer'>
+        <p>@2024 Edusity. All rights reserved.</p>
+        <ul>
+            <li>Terms of Service</li>
+            <li>Privacy Policy</li>
+        </ul>
+    </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Search Results</title>
+</head>
+<body>
+
+<header>
+    <h1></h1>
+</header>
+
+<div class="search-results">
+    <% if (courses.length > 0) { %>
+        <h2>Results for "<%= search %>"</h2>
+        <ul>
+            <% courses.forEach(course => { %>
+                <li class="course-item">
+                    <span class="course-name"><%= course.course_name %></span> <br>
+                    <span class="user-id">User ID: <%= course.user_id %></span>
+                </li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <p class="no-results">No courses found for "<%= search %>"</p>
+    <% } %>
+    
+    <a href="/course/search" class="back-button">Back to Search</a>
+</div>
+
+</body>
+</html>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
