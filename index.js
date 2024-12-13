@@ -2,6 +2,10 @@ const express = require('express');
 const path = require('path');
 const mysql = require('mysql2');
 const ejsLayouts = require('express-ejs-layouts');
+const dotenv = require('dotenv');
+
+// Load environment variables from .env file
+dotenv.config();
 
 // Initialize Express app
 const app = express();
@@ -23,15 +27,15 @@ app.use(ejsLayouts);
 
 // Home Route (this should be before other route handlers)
 app.get('/', (req, res) => {
-    res.render('index', { title: 'Education App' ,navbarClass: '' ,pageClass: ''}); // This will load index.ejs and inject it into layout.ejs
+    res.render('index', { title: 'Education App', navbarClass: '', pageClass: '' }); // Load index.ejs and inject into layout.ejs
 });
 
-// Create a connection to MySQL 
+// Create a connection to MySQL using environment variables
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'Kanachuna@1',
-    database: 'education_app'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 });
 
 // Connect to MySQL
@@ -50,17 +54,17 @@ module.exports = db;
 
 // About page with custom navbar color (blue-navbar)
 app.get('/about', (req, res) => {
-    res.render('about', { title: 'About Us', navbarClass: 'blue-navbar' ,pageClass: 'about-page'});
+    res.render('about', { title: 'About Us', navbarClass: 'blue-navbar', pageClass: 'about-page' });
 });
 
 // Add Course Route (Use add_course.ejs)
 app.get('/course/add', (req, res) => {
-    res.render('add_course', { title: 'Add New Course', navbarClass: 'blue-navbar',pageClass: 'add-course-page' });
+    res.render('add_course', { title: 'Add New Course', navbarClass: 'blue-navbar', pageClass: 'add-course-page' });
 });
 
 // Search Courses Route (Use search_course.ejs)
 app.get('/course/search', (req, res) => {
-    res.render('search_course', { title: 'Search Courses', navbarClass: 'blue-navbar',pageClass: 'search-course-page' });
+    res.render('search_course', { title: 'Search Courses', navbarClass: 'blue-navbar', pageClass: 'search-course-page' });
 });
 
 // Add the route for handling course-related operations
